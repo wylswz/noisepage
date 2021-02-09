@@ -172,6 +172,11 @@ print_sys_info("OS_NAME;OS_RELEASE;OS_VERSION;OS_PLATFORM")
 #   NOISEPAGE_TEST_PARALLELISM    : The number of tests that should run in parallel.
 #######################################################################################################################
 
+if (PROXY)
+    set(ENV{HTTP_PROXY} "${PROXY}")
+    set(ENV{HTTPS_PROXY} "${PROXY}")
+endif (PROXY)
+
 # Default to DEBUG builds if -DCMAKE_BUILD_TYPE was not specified.
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
